@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+
+
+<style>
+
+/** {
+    overflow: hidden;
+}*/
+  
+.carousel-button-left { 
+  height: 20px;
+  width: 20px;
+  background-color: gray;
+ }
+.carousel-button-right { 
+  height: 20px;
+  width: 20px;
+  background-color: gray;
+ }
+
+ .carousel-block {
+  position: absolute;
+  transition: 1s;
+  left: 0px;
+ }
+
+.carousel-wrapper {
+  position: relative;
+  top: 20px;
+  left: 20px;
+  overflow: hidden;
+  height: 200px;
+  width: 350px;
+  background-color: red;
+}
+
+.carousel-items {
+  display: block;
+  overflow: hidden;
+}
+
+</style>
+
+</head>
+<body>
+  
+
+
+<div class="carousel">
+
+    <div class="carousel-button-left" onclick="left()"><a href="#"><</a></div>
+
+    <div class="carousel-button-right" onclick="right()"><a href="#">></a></div>
+
+     
+
+    <div class="carousel-wrapper">
+
+        <div id="c-it" class="carousel-items 0"><img class="carousel-block" style="left:0px" src="http://via.placeholder.com/350x200"><img class="carousel-block 1" style="left:0px" src="http://via.placeholder.com/350x200"><img class="carousel-block 2" style="left:0px" src="http://via.placeholder.com/350x200"><img class="carousel-block 3" style="left:0px" src="http://via.placeholder.com/350x200"></div>
+
+    </div>
+
+</div>
+
+<!--     // for (var i = 0; i < document.getElementById("c-it").childNodes.length; i++) {
+    //   console.log( document.getElementById("c-it").childNodes[i] );
+    // }
+ -->
+
+
+<script>
+
+
+var lastCh = document.getElementById("c-it").lastChild;
+var itemsCount = 0;
+var iminus = itemsCount;
+// var iminusx2 = 0;
+// var allItemsCount = document.getElementById("c-it").childNodes.length;
+var iminusx2 = 0;
+var iminusx3 = 0;
+
+
+console.log(itemsCount + "   item count")
+
+
+var itemcalc = function() {
+for (var i = 0; i < document.getElementById("c-it").childNodes.length; i++) {
+  itemsCount = i;
+}
+}
+itemcalc();
+
+var right = function() {
+
+console.log(itemsCount + "   item count")
+
+if (document.getElementById("c-it").childNodes[itemsCount].style.left == "350px") {
+    iminusx2 = --itemsCount; 
+    document.getElementById("c-it").childNodes[iminusx2].style.left = "350px"
+    console.log("if works");
+    if (itemsCount == 0) {
+      setTimeout(function() {for(var i = 0; i < document.getElementById("c-it").childNodes.length; i++) {
+          document.getElementById("c-it").childNodes[i].style.transition = "0s";
+          document.getElementById("c-it").childNodes[i].style.left = "-350px";
+      } }, 100)
+      setTimeout(function() { for(var i = 0; i < document.getElementById("c-it").childNodes.length; i++) {
+      document.getElementById("c-it").childNodes[i].style.transition = "1s"
+    } }, 200)
+      setTimeout(function() { for(var i = 0; i < document.getElementById("c-it").childNodes.length; i++) {
+      document.getElementById("c-it").childNodes[i].style.left = "0px"
+      itemcalc();
+    } }, 300)
+      
+    }
+  }
+   else if (document.getElementById("c-it").childNodes[itemsCount].style.left == "350px" ) {
+    itemsCount = --itemsCount;
+    console.log("if works");
+    document.getElementById("c-it").childNodes[itemsCount].style.left = "350px"
+  }
+   else {
+    document.getElementById("c-it").childNodes[itemsCount].style.left = "350px"
+    console.log("else works");
+}
+
+}
+
+
+var left = function() {
+
+console.log(itemsCount + "   item count")
+
+if (document.getElementById("c-it").childNodes[itemsCount].style.left == "350px") {
+    iminusx2 = --itemsCount; 
+    document.getElementById("c-it").childNodes[iminusx2].style.left = "350px"
+    console.log("if works");
+    if (itemsCount == 0) {
+      setTimeout(function() {for(var i = 0; i < document.getElementById("c-it").childNodes.length; i++) {
+          document.getElementById("c-it").childNodes[i].style.transition = "0s";
+          document.getElementById("c-it").childNodes[i].style.left = "-350px";
+      } }, 100)
+      setTimeout(function() { for(var i = 0; i < document.getElementById("c-it").childNodes.length; i++) {
+      document.getElementById("c-it").childNodes[i].style.transition = "1s"
+    } }, 200)
+      setTimeout(function() { for(var i = 0; i < document.getElementById("c-it").childNodes.length; i++) {
+      document.getElementById("c-it").childNodes[i].style.left = "0px"
+      itemcalc();
+    } }, 300)
+      
+    }
+  }
+   else if (document.getElementById("c-it").childNodes[itemsCount].style.left == "350px" ) {
+    itemsCount = --itemsCount;
+    console.log("if works");
+    document.getElementById("c-it").childNodes[itemsCount].style.left = "350px"
+  }
+   else {
+    document.getElementById("c-it").childNodes[itemsCount].style.left = "350px"
+    console.log("else works");
+}
+
+}
+
+// else if (document.getElementById("c-it").childNodes[iminusx2].style.left == "350px") {
+//     iminusx3 = iminusx2 - 1; 
+//     document.getElementById("c-it").childNodes[iminusx3].style.left = "350px"
+//     console.log("else if2 works");
+//   } 
+
+
+// var lastCh = document.getElementById("c-it").lastChild;
+// var itemsCount = 0;
+// var iminus = itemsCount;
+// // var iminusx2 = 0;
+// // var allItemsCount = document.getElementById("c-it").childNodes.length;
+// var iminusx2 = 0;
+// var iminusx3 = 0;
+
+
+// console.log(itemsCount + "   item count")
+
+// for (var i = 0; i < document.getElementById("c-it").childNodes.length; i++) {
+//   itemsCount = i;
+// }
+  
+// var right = function() {
+
+// console.log(itemsCount + "   item count")
+
+// if (document.getElementById("c-it").childNodes[iminus].style.left == "350px") {
+//     iminusx2 = --iminus; 
+//     document.getElementById("c-it").childNodes[iminusx2].style.left = "350px"
+//     console.log("else if works");
+//   }
+//    else if (document.getElementById("c-it").childNodes[itemsCount].style.left == "350px" ) {
+//     iminus = --itemsCount;
+//     console.log(iminus + "wtf")
+//     document.getElementById("c-it").childNodes[iminus].style.left = "350px"
+//   }
+//    else {
+//     document.getElementById("c-it").childNodes[itemsCount].style.left = "350px"
+//     console.log("else works");
+// }
+
+// }
+</script>
+
+</body>
+</html>
