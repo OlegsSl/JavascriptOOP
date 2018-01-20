@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+
+
+
+
+
+
+
+
+
+
+
+	<script>
+		"use strict";
+		
+		function Car(maxSpeed) {
+			var fuelAmount = 0;
+
+			var CAPACITY = 500;
+
+			this.setFuelAmount = function(amount) {
+				if (amount > CAPACITY) {
+					throw new Error("Thanks, i am not ...");
+				}
+				fuelAmount = amount;
+			}
+
+			this.getFuelAmount = function() {
+				return fuelAmount;
+			}
+
+			var self = this;
+
+			console.log("New car created with max speed: " +  maxSpeed);
+
+			function onRouteEnd() {
+				console.log("Your car has arrived");
+			}
+
+			function isEnoughFuel(distance) {
+				return fuelAmount > distance / 10;
+			}
+
+			function travelTime(distance) {
+				return distance * 1000 / maxSpeed;
+			}
+
+			// travelTime = travelTime.bind(this);
+
+			this.startMove = function(distance) {
+				if (isEnoughFuel(distance)) {
+					setTimeout(onRouteEnd , travelTime(distance));
+				} else {
+					console.log("Not enough fuel")
+				}
+
+			}
+		}
+
+
+		var car = new Car(120);
+		car.setFuelAmount(150);
+		car.startMove(1000);
+
+
+		var car2 = new Car(200);
+		car2.setFuelAmount(600);
+		car2.startMove(1000);
+
+	</script>
+	
+</body>
+</html>
