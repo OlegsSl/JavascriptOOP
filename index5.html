@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+<script>
+	//Короткий пример портотипа
+	// function User(name) {
+	// 	this.name = name;
+	// }
+
+	// User.prototype.sayHi = function () {
+	// 	console.log("Hello," + this.name);
+	// }
+
+	// var user = new User("john");
+	// user.sayHi();
+
+
+</script>
+
+
+	<script>
+		// "use strict";
+		
+		// function Transport() {
+		// 	this._broken = false;
+
+		// 	this.broken = function() {
+		// 		this._broken = true;
+		// 	}
+		// }
+
+		// function Car(maxSpeed) {
+		// 	Transport.call(this);
+
+		// 	var fuelAmount = 0;
+
+		// 	var CAPACITY = 500;
+
+		// 	this.setFuelAmount = function(amount) {
+		// 		if (amount > CAPACITY) {
+		// 			throw new Error("Thanks, i am not ...");
+		// 		}
+		// 		fuelAmount = amount;
+		// 	}
+
+		// 	this.getFuelAmount = function() {
+		// 		return fuelAmount;
+		// 	}
+
+		// 	var self = this;
+
+		// 	console.log("New car created with max speed: " +  maxSpeed);
+
+		// 	function onRouteEnd() {
+		// 		console.log("Your car has arrived");
+		// 	}
+
+		// 	function isEnoughFuel(distance) {
+		// 		return fuelAmount > distance / 10;
+		// 	}
+
+		// 	function travelTime(distance) {
+		// 		return distance * 1000 / maxSpeed;
+		// 	}
+
+		// 	this.startMove = function(distance) {
+		// 		if (this._broken) {
+		// 			throw new Error("Car is broken")
+		// 		}
+
+		// 		if (isEnoughFuel(distance)) {
+		// 			setTimeout(onRouteEnd , travelTime(distance));
+		// 		} else {
+		// 			console.log("Not enough fuel")
+		// 		}
+
+		// 	}
+		// }
+
+
+		// var car = new Car(120);
+		// car.setFuelAmount(150);
+		// car.startMove(1000);
+
+		// var car2 = new Car(200);
+		// car2.setFuelAmount(500);
+		// car2.startMove(1000);
+
+		// var car3 = new Car(333);
+		// car3.broken();
+		// car3.startMove();
+
+		"use strict!";
+
+
+		function Car(maxSpeed , name) {
+			this._maxSpeed = maxSpeed;
+			this._fuelAmount = 0;
+			this._name = name;
+		}
+
+		Car.prototype.CAPACITY = 500;
+
+		Car.prototype.setFuelAmount = function(amount) {
+			if(amount > this.CAPACITY) {
+				throw new Error("Перелил...");
+			}
+			this._fuelAmount = amount;
+		}
+
+		Car.prototype._isEnoughFuel = function(distance) {
+			return this._fuelAmount > distance / 10;
+		}
+
+		Car.prototype._travelTime = function(distance) {
+			return distance * 1000 / this._maxSpeed;
+		}
+
+		Car.prototype.startMove = function(distance) {
+
+			console.log("Starting " + this._name)
+
+			if (this._isEnoughFuel(distance)) {
+				var self = this;
+				setTimeout(function() {
+					console.log(self._name + " has arrived!" + " And time is: " +self._travelTime(distance));
+				}, this._travelTime(distance));
+			} else {
+				console.log("Not enough Fuel");
+			}
+		}
+
+		var ferrary = new Car(70 , "Ferrary");
+		ferrary.setFuelAmount(150);
+		ferrary.startMove(50);
+
+		var mercedes = new Car(120 , "Mercedes");
+		mercedes.setFuelAmount(505);
+		mercedes.startMove(500);
+
+		var volvo = new Car(120 , "Volvo");
+		volvo.setFuelAmount(200);
+		volvo.startMove(500);	
+	</script>
+</body>
+</html>

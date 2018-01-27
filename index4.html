@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+
+
+
+	<script>
+		
+		var worker= {
+			salary: 300,
+		}
+
+		function User(name) {
+			this.name = name;
+		}
+
+		User.prototype = worker;
+
+
+		var user1 = new User("John");
+		console.log(user1.name);
+		console.log(user1.salary);
+		
+		var user2 = new User("Philip");
+		console.log(user2.name);
+		console.log(user2.salary);
+
+	</script>
+	
+</body>
+</html>
