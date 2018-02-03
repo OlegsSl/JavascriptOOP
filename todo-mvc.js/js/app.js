@@ -3,11 +3,18 @@
 
 	function Todo() {
 		this.storage = new window.app.Storage();
-		this.Model = new window.app.Model(this.storage);
+		this.model = new window.app.Model(this.storage);
 		this.template = new window.app.Template();
-		this.template = new window.app.View(this.template);
+		this.view = new window.app.View(this.template);
+		this.controller = new window.app.Controller(this.model , this.view);
+
 	}
 
 	window.app.todo = new Todo();
+
+
+	window.addEventListener ('load', function() {
+		window.app.todo.controller.showAll();
+	});
 
 })(window);

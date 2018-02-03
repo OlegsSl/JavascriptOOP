@@ -3,12 +3,12 @@
 
 function Template() {
 	this.defaultTemplate = 
-	 "<li data-id='{{id}}' class='{{done}}'>"
-	 "div class='view'>"
-	 "<input class='toogle' type='checkbox' {{checked}}>"
-	 "<label>{{title}}</label>"
-	 "<button class='destroy'></button>"
-	 "</div>"
+	 "<li data-id='{{id}}' class='{{done}}'>"+
+	 "<div class='view'>"+
+	 "<input class='toggle' type='checkbox' {{checked}}>"+
+	 "<label>{{title}}</label>"+
+	 "<button class='destroy'></button>"+
+	 "</div>"+
 	 "</li>"
 }
 
@@ -27,6 +27,7 @@ Template.prototype.fillTemplate = function (todos) {
 
 		view = view + template;
 	}
+	return view;
 }
 
 window.app = window.app || {};
